@@ -12,6 +12,8 @@ More often than not, one will encounter a problem during implementation of a bio
 
 **Note**: Per [this release](https://www.ncbi.nlm.nih.gov/news/10-17-2016-gi-numbers-removed/) from the NCBI, output of GenBank files does not, by default, contain GenInfo ("GI") numbers. You have to manually set this option upon export. **If you do not do this, the following script will not work**. 
 
+## Another Note**: This script will only work for Prokaryotes. 
+
 ***
 
 ### Why do we need to do this?
@@ -21,7 +23,7 @@ Good question! A raw GenBank file looks like this:
 ```
 LOCUS       KT373978               75114 bp    DNA     linear   PHG 23-AUG-2015
 DEFINITION  Mycobacterium phage Ukulele, complete genome.
-ACCESSION   KT373978
+ACCESSION   KT373978    GI:918360239
 VERSION     KT373978.1
 KEYWORDS    .
 SOURCE      Mycobacterium phage Ukulele
@@ -84,6 +86,8 @@ gi|918360239|gb|KT373978.1|	ena	CDS	267	560	.	+	0	transcript_id "transcript:SEA_
 ```
 
 Thus, we'll need to parse our GenBank file and do a little text manipulation. To accomplish this, we'll turn to our friend `Perl`.
+
+**Note**: Curious about that weird string, `gi|918360239|gb|KT373978.1|`? That's our GenomeID. Why do we need it? This information will be required by other programs (such as `htseq`) in order to correclty perform various downstream annotations/mappings betweeen NGS data and the GTF reference file. For example: if you look closely at the [FASTA](https://www.ncbi.nlm.nih.gov/nuccore/KT373978.1?report=fasta&log$=seqview) file for *Ukelele*, you'll see the accession number right at the top. 
 
 ***
 
