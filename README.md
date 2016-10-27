@@ -18,6 +18,8 @@ More often than not, one will encounter a problem during implementation of a bio
 
 ***
 
+### What do we need to do?
+
 For this example, we are going to convert the [GenBank](https://www.ncbi.nlm.nih.gov/nuccore/KT373978.1) file for the Mycobacterium phage _Ukelele_ to a GTF file. The raw GenBank file looks like this:
 
 ```
@@ -88,19 +90,8 @@ Thus, we'll need to parse it. To do so, we'll use a Perl script.
 
 ***
 
-Though we are going to provide the script below, it's important that one not only knows how to _use_ a script, but also understands _how_ the script performs its function. A useful pedagogical technique to do this is to first write what you want to achieve in [pseudocode](http://www.unf.edu/~broggio/cop2221/2221pseu.htm). Think of psuedocode as a set of easily interpreted directions, written in plain speech, that you can then convert into your programming language of choice. In this case, the "high-level" function of our code is as follows:
 
-```
-read in text file:
-	extract just the key bits of information that we need
-	store these bits in a useful fashion
-
-output new lines that contain the stored information
-```
-
-Let's look at the script!
-
-***
+### The `perl` Script
 
 ```perl
 while (<STDIN>) {
