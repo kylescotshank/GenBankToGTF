@@ -81,9 +81,10 @@ FEATURES             Location/Qualifiers
 This file contains an immense amount of information, far more than we need for our purposes. What we want in the end is something that looks like this:
 
 ```
-SomeGenomeID	ena	exon	start	end	.	+	.	transcript_id "transcript:###; gene_id "gene:### gene_name "###"
-SomeGenomeID	ena	exon	start	end	.	+	.	transcript_id "transcript:###; gene_id "gene:### gene_name "###"
-SomeGenomeID	ena	exon	start	end	.	+	.	transcript_id "transcript:###; gene_id "gene:### gene_name "###"
+gi|918360239|gb|KT373978.1|	ena	exon	267	560	.	+	.	transcript_id "transcript:SEA_UKULELE_1"; gene_id "gene:SEA_UKULELE_1"; gene_name "SEA_UKULELE_1"
+gi|918360239|gb|KT373978.1|	ena	CDS	267	560	.	+	0	transcript_id "transcript:SEA_UKULELE_1"; gene_id "gene:SEA_UKULELE_1"; gene_name "SEA_UKULELE_1"
+gi|918360239|gb|KT373978.1|	ena	exon	267	560	.	+	.	transcript_id "transcript:SEA_UKULELE_1"; gene_id "gene:SEA_UKULELE_1"; gene_name "SEA_UKULELE_1"
+gi|918360239|gb|KT373978.1|	ena	CDS	267	560	.	+	0	transcript_id "transcript:SEA_UKULELE_1"; gene_id "gene:SEA_UKULELE_1"; gene_name "SEA_UKULELE_1"
 ```
 
 Thus, we'll need to parse it. To do so, we'll use a Perl script. 
@@ -91,7 +92,9 @@ Thus, we'll need to parse it. To do so, we'll use a Perl script.
 ***
 
 
-### The `perl` Script
+### The `perl` script
+
+Our unannotated script is below! Note that the actual `.pl` file contains a copious amount of comments. 
 
 ```perl
 while (<STDIN>) {
@@ -125,6 +128,48 @@ while (<STDIN>) {
 
     }
 }
+```
+
+Let's break what the script is doing down into some psuedocode:
+
+```
+While I'm receiving standard input:
+	
+		Ignore the line-terminator 
+
+		If you find (via regular expression matching) the info that gives me the GenInfo and GenBank data that I want, grab it:
+			Save info to variable genbank
+			Save info to variable geninfo
+
+		If you find (via regular expression matching) the info that gives me the gene information that I want, grab it:
+			Save info to variable complement
+			Save info to variable start
+			Save info to variable end
+
+		If you find (via regular expression matching) the info that gives me the locus information that I want, grab it:
+			Save info to variable symbol
+
+		If the variable complement isn't empty:
+			Print two new lines that contain information in the order that I want it
+
+		If the variable complement is empty:
+			Print two new lines that contain information in the order that I want it.
+END
+```
+***
+
+### Using the script
+
+At the terminal, use the following command:
+
+```bash
+cat <GenBankFile.txt> | perl genbank2gtf.pl > <GTFOutput.gtf> 
+```
+
+Using the file *ukelele_phage_genbank.txt*:
+
+```bash
+cat ukelele_phage_genbank.txt | perl genbank2gtf.pl > uekelele_phage.gtf
 ```
 
 

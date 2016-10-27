@@ -29,9 +29,9 @@ while (<STDIN>) {
 #	\s+ - matches any whitespace character, + means catch between one and an unlimited number of times
 #	(\w+.) - second capture group - matches any word character (equal to regex [a-zA-Z0-9_]) between one and an unlmited number of times, then any intervening character
 #	(\d+) - third capture group - capture any digits [0-9] between one and an unlimited number of times
-	$GenBank = $1;
+	$genbank = $1;
 #	variable 'genbank' = GenBank Accession Version
-	$GenInfo = $3;
+	$geninfo = $3;
 #	variable 'geninfo' = GenInfo value
 	}
 
@@ -63,14 +63,14 @@ while (<STDIN>) {
 #	variable 'symbol' = first capture group
 
 	if ($complement eq "complement") {
-	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\texon\t",$start,"\t",$end,"\t.\t-\t.\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
-	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\tCDS\t",$start,"\t",$end,"\t.\t-\t0\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	    print "gi|",$geninfo,"|gb|",$genbank,"|","\tena\texon\t",$start,"\t",$end,"\t.\t-\t.\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	    print "gi|",$geninfo,"|gb|",$genbank,"|","\tena\tCDS\t",$start,"\t",$end,"\t.\t-\t0\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
 #	    print "Chromosome      ena     exon    ",$start,"     ",$end,"    .       -       .       transcript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
 #	    print "Chromosome      ena     CDS    ",$start,"     ",$end,"    .       -       0       transcript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
 	}
 	else {
-	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\texon\t",$start,"\t",$end,"\t.\t+\t.\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
-	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\tCDS\t",$start,"\t",$end,"\t.\t+\t0\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	    print "gi|",$geninfo,"|gb|",$genbank,"|","\tena\texon\t",$start,"\t",$end,"\t.\t+\t.\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	    print "gi|",$geninfo,"|gb|",$genbank,"|","\tena\tCDS\t",$start,"\t",$end,"\t.\t+\t0\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
 #	    print "Chromosome      ena     exon    ",$start,"     ",$end,"    .       +       .       transcript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
 #	    print "Chromosome      ena     CDS    ",$start,"     ",$end,"    .       +       0       transcript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
 	}
