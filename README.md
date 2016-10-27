@@ -16,7 +16,7 @@ More often than not, one will encounter a problem during implementation of a bio
   * Perl has the native ability to parse strings and regular expressions, which means you can use low-level code to perform your tasks (i.e., no need to download packages or libraries). 
   * There are _many_ scripts and tools that are widely used in bioinformatics that are written in Perl. 
 
-### Tutorial
+***
 
 For this example, we are going to convert the [GenBank](https://www.ncbi.nlm.nih.gov/nuccore/KT373978.1) file for the Mycobacterium phage _Ukelele_ to a GTF file. The raw GenBank file looks like this:
 
@@ -88,15 +88,27 @@ Thus, we'll need to parse it. To do so, we'll use a Perl script.
 
 ***
 
-Though we are going to provide the script below, it's important that one not only knows how to _use_ a script, but also understands _how_ the script performs its function. A useful pedagogical technique to do this is to first write what you want to achieve in [pseudocode](http://www.unf.edu/~broggio/cop2221/2221pseu.htm). In this case, what we want to do is:
+Though we are going to provide the script below, it's important that one not only knows how to _use_ a script, but also understands _how_ the script performs its function. A useful pedagogical technique to do this is to first write what you want to achieve in [pseudocode](http://www.unf.edu/~broggio/cop2221/2221pseu.htm). Think of psuedocode as a set of easily interpreted directions, written in plain speech, that you can then convert into your programming language of choice. In this case, the "high-level" function of our code is as follows:
 
 ```
 read in text file:
 	extract just the key bits of information that we need
 	store these bits in a useful fashion
 
-print new lines that ocntain the stored information
+print new lines that contain the stored information
 ```
+
+With this in mind, we can thus build out our code:
+
+***
+
+First, we will set the only variable that need to: `#$GenomeID`:
+
+```perl
+$GenomeID = "gi|358331475|gb|EU203571.2|";
+```
+
+
 
 
 
