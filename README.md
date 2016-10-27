@@ -10,6 +10,8 @@
 
 More often than not, one will encounter a problem during implementation of a bioinformatics workflow where you'll need to perform some kind of file conversion in order to move forward. Though there are many different software solutions available that can perform the task, it is useful to be able to perform such conversions yourself at the command line to mitigate costs and have more control over your output. For this tutorial, we will convert a [GenBank](https://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html) file to a [GTF](http://useast.ensembl.org/info/website/upload/gff.html). Specifically, we're going to convert the [GenBank](https://www.ncbi.nlm.nih.gov/nuccore/KT373978.1) file for the Mycobacterium phage _Ukelele_ to a GTF file.
 
+**Note**: Per [this release](https://www.ncbi.nlm.nih.gov/news/10-17-2016-gi-numbers-removed/) from the NCBI, output of GenBank files does not, by default, contain GenInfo ("GI") numbers. You have to manually set this option upon export. **If you do not do this, the following script will not work**. 
+
 ***
 
 ### Why do we need to do this?
