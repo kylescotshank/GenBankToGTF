@@ -76,3 +76,28 @@ FEATURES             Location/Qualifiers
                      TGTVSWPVDDEDLRWASSLGELVAKRLAEMLGVKLDPAIFRGRESLNDGHKLQ"
 ```
 
+This file contains an immense amount of information, far more than we need for our purposes. What we want in the end is something that looks like this:
+
+```
+SomeGenomeID	ena	exon	start	end	.	+	.	transcript_id "transcript:###; gene_id "gene:### gene_name "###"
+SomeGenomeID	ena	exon	start	end	.	+	.	transcript_id "transcript:###; gene_id "gene:### gene_name "###"
+SomeGenomeID	ena	exon	start	end	.	+	.	transcript_id "transcript:###; gene_id "gene:### gene_name "###"
+```
+
+Thus, we'll need to parse it. To do so, we'll use a Perl script. 
+
+***
+
+Though we are going to provide the script below, it's important that one not only knows how to _use_ a script, but also understands _how_ the script performs its function. A useful pedagogical technique to do this is to first write what you want to achieve in [pseudocode](http://www.unf.edu/~broggio/cop2221/2221pseu.htm). In this case, what we want to do is:
+
+```
+read in text file:
+	extract just the key bits of information that we need
+	store these bits in a useful fashion
+
+print new lines that ocntain the stored information
+```
+
+
+
+
