@@ -95,18 +95,49 @@ read in text file:
 	extract just the key bits of information that we need
 	store these bits in a useful fashion
 
-print new lines that contain the stored information
+output new lines that contain the stored information
 ```
 
-With this in mind, we can thus build out our code:
+Let's look at the script!
 
 ***
 
-First, we will set the only variable that need to: `#$GenomeID`:
-
 ```perl
-$GenomeID = "gi|358331475|gb|EU203571.2|";
+while (<STDIN>) {
+
+
+    $line = $_;
+    chomp($line);
+
+	if ($line =~/VERSION\s+(\w+.\d+)\s+(\w+.)(\d+)/) {
+	$GenBank = $1;
+	$GenInfo = $3;
+	}
+
+    if ($line =~ /gene\s+([a-z]*)\(*(\d+)\.\.(\d+)\)*/) {
+	$complement = $1;
+	$start = $2;
+	$end = $3;
+    }
+
+    elsif ($line =~ /\/locus_tag=\"(\w+)\"/) {
+	$symbol = $1;
+
+	if ($complement eq "complement") {
+	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\texon\t",$start,"\t",$end,"\t.\t-\t.\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\tCDS\t",$start,"\t",$end,"\t.\t-\t0\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	}
+	else {
+	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\texon\t",$start,"\t",$end,"\t.\t+\t.\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	    print "gi|",$GenInfo,"|gb|",$GenBank,"|","\tena\tCDS\t",$start,"\t",$end,"\t.\t+\t0\ttranscript_id \"transcript:",$symbol,"\"\; gene_id \"gene:",$symbol,"\"\; gene_name \"",$symbol,"\"\n";
+	}
+
+    }
+}
 ```
+
+
+
 
 
 
