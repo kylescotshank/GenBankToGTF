@@ -89,9 +89,9 @@ Thus, we'll need to parse our GenBank file and do a little text manipulation. To
 
 Good question!
 
-  * Perl has history and inertia. There was a major expansion in bioinformatics training and practice at the turn of the century because of the Human Genome Project. At that time, Perl was by far the most popular scripting language in general use. 
-  * Perl has the native ability to parse strings and regular expressions, which means you can use low-level code to perform your tasks (i.e., no need to download packages or libraries). 
-  * There are _many_ scripts and tools that are widely used in bioinformatics that are written in Perl. 
+  * `Perl` has history and inertia. There was a major expansion in bioinformatics training and practice at the turn of the century to meet the needs of the Human Genome Project. At that time, `Perl` was by far the most popular scripting language in general use - especially amongst the computer scientists involved in the HGP.
+  * `Perl` has the native ability to parse strings and regular expressions, which means you can use low-level code to perform your tasks (i.e., no need to download packages or libraries). 
+  * There are _many_ scripts and tools that are widely used in bioinformatics that are written in `Perl`. 
 
 As time permits, we'll also load `Python` and `R` scripts that accomplish the same task so that you'll be able to perform this task in your language of choice. 
 
