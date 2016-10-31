@@ -6,7 +6,7 @@ More often than not, one will encounter a problem during implementation of a bio
 
 **Note**: Per [this release](https://www.ncbi.nlm.nih.gov/news/10-17-2016-gi-numbers-removed/) from the NCBI, output of GenBank files does not, by default, contain GenInfo ("GI") numbers. You have to manually set this option upon export. **If you do not do this, the following script will not work**. 
 
-## Another Note**: This script will only work for Prokaryotes. 
+**Another Note**: This script will only work for Prokaryotes. 
 
 ***
 
